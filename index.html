@@ -58,6 +58,103 @@
 </head>
 
 <body>
-<script src="flutter_bootstrap.js" async></script>
+  <!-- Ambient flute background audio element with multi-path fallbacks -->
+  <audio id="bg-audio" loop preload="auto" playsinline>
+    <source src="audio/flute.mp3" type="audio/mpeg">
+    <source src="assets/audio/flute.mp3" type="audio/mpeg">
+    <source src="audio/katha_ambience.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    (function() {
+      // Internal state: has the user requested audio to play?
+      var _wantsPlay = false;
+
+      function getAudio() {
+        return document.getElementById('bg-audio');
+      }
+
+      // Attempt to play; on autoplay block, the gesture-unlock listener below will retry.
+      function _attemptPlay() {
+        var audio = getAudio();
+        if (!audio) return;
+        audio.volume = 0.0;
+        var promise = audio.play();
+        if (promise !== undefined) {
+          promise
+            .then(function () {
+              // Fade in to 0.45 over 800ms
+              var steps = 20;
+              var target = 0.45;
+              var step = 0;
+              var interval = setInterval(function () {
+                step++;
+                audio.volume = Math.min(target, (step / steps) * target);
+                if (step >= steps) clearInterval(interval);
+              }, 40);
+              console.log('[Audio] Flute background playing.');
+            })
+            .catch(function (err) {
+              console.log('[Audio] Autoplay blocked — will play on next gesture:', err);
+            });
+        }
+      }
+
+      // Public API used by Flutter web via dart:js / js_interop
+      window.playFluteAudio = function () {
+        _wantsPlay = true;
+        window._wantsAudio = true; // legacy compat flag
+        _attemptPlay();
+      };
+
+      window.pauseFluteAudio = function () {
+        _wantsPlay = false;
+        window._wantsAudio = false;
+        var audio = getAudio();
+        if (audio) {
+          // Fade out over 400ms
+          var interval = setInterval(function () {
+            if (!audio || audio.volume <= 0.03) {
+              if (audio) { audio.pause(); audio.volume = 0.0; }
+              clearInterval(interval);
+              return;
+            }
+            audio.volume = Math.max(0, audio.volume - 0.06);
+          }, 30);
+        }
+      };
+
+      window.toggleFluteAudio = function () {
+        var audio = getAudio();
+        if (audio && !audio.paused) {
+          window.pauseFluteAudio();
+          return false;
+        } else {
+          window.playFluteAudio();
+          return true;
+        }
+      };
+
+      window.isFluteAudioPlaying = function () {
+        var audio = getAudio();
+        return audio ? !audio.paused : false;
+      };
+
+      // Unlock on first user gesture — fires play if Flutter already requested it
+      function _onGesture() {
+        if (_wantsPlay) {
+          var audio = getAudio();
+          if (audio && audio.paused) {
+            _attemptPlay();
+          }
+        }
+      }
+      document.addEventListener('click',      _onGesture, { passive: true });
+      document.addEventListener('touchstart', _onGesture, { passive: true });
+      document.addEventListener('keydown',    _onGesture, { passive: true });
+    })();
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
