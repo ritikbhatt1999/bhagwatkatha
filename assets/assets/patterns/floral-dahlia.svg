@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="260" viewBox="0 0 260 260">
+  <defs>
+    <path id="dahlia-outer" d="M0 0 C -3.2 -10 -3.2 -32 0 -44 C 3.2 -32 3.2 -10 0 0 Z" fill="none" stroke="#a8842f" stroke-width="0.9"/>
+    <path id="dahlia-mid" d="M0 0 C -3.6 -8 -3.6 -20 0 -27 C 3.6 -20 3.6 -8 0 0 Z" fill="#c4a456" fill-opacity="0.3" stroke="#a8842f" stroke-width="0.9"/>
+    <g id="dahlia">
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(22.5)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(45)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(67.5)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(90)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(112.5)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(135)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(157.5)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(180)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(202.5)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(225)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(247.5)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(270)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(292.5)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(315)"/>
+      <use href="#dahlia-outer" xlink:href="#dahlia-outer" transform="rotate(337.5)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(11.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(33.75)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(56.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(78.75)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(101.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(123.75)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(146.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(168.75)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(191.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(213.75)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(236.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(258.75)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(281.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(303.75)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(326.25)"/>
+      <use href="#dahlia-mid" xlink:href="#dahlia-mid" transform="rotate(348.75)"/>
+      <circle r="7" fill="none" stroke="#a8842f" stroke-width="1"/>
+      <circle r="3" fill="#b25f28" fill-opacity="0.6"/>
+    </g>
+    <g id="corner-floret">
+      <circle r="2.6" fill="#c4a456"/>
+      <circle r="5.5" fill="none" stroke="#a8842f" stroke-width="0.8" stroke-dasharray="1 2.5"/>
+    </g>
+  </defs>
+  <use href="#dahlia" xlink:href="#dahlia" transform="translate(130 130)"/>
+  <use href="#corner-floret" xlink:href="#corner-floret" transform="translate(28 28)"/>
+  <use href="#corner-floret" xlink:href="#corner-floret" transform="translate(232 28)"/>
+  <use href="#corner-floret" xlink:href="#corner-floret" transform="translate(28 232)"/>
+  <use href="#corner-floret" xlink:href="#corner-floret" transform="translate(232 232)"/>
+</svg>
